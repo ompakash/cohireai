@@ -88,3 +88,23 @@ class LoginUser(APIView):
             }, status=status.HTTP_200_OK)
         else:
             return Response({"error": "Invalid email or password."}, status=status.HTTP_401_UNAUTHORIZED)
+
+class UserProfile(APIView):
+
+    def get(self, request):
+        user = request.user
+        user_data = {
+            'email': user.email,
+            'name': user.name,
+            'type': user.type,
+        }
+
+        if 'Employee' in user.type:
+            emp_obj = Employee.objects.get(email = user.email)
+            user_data['address'] = emp_obj.showAdditional.address
+        if 'Organization' in user.type:
+            emp_obj = Organization.objects.get(email = user.email)
+            user_data['gst'] = emp_obj.showAdditional.gst
+            user_data['organization_location'] = emp_obj.showAdditional.organization_location
+
+        return Response(f"{user_data}", status=status.HTTP_200_OK)
