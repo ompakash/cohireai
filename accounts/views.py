@@ -16,7 +16,7 @@ class SignupUser(APIView):
 
     def post(self, request):
         with transaction.atomic():
-            email = request.data.get("email")
+            email = request.data.get("email").lower()
             password = request.data.get("password")
             user_type = request.data.get("type")
 
