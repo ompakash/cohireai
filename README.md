@@ -2,12 +2,14 @@ API DOCUMENTATION = https://documenter.getpostman.com/view/23480640/2sAXxMftZv
 
 SIMPLE DJANGO APPLICATION SETUP
 
-CREATE VIRTUAL ENV = python -m venv venv_cohire (windows)
-
-ACTIVATE = .\venv_cohire\Scripts\activate
-
-PROJECT FOLDER =  cd .\cohireai\
-
-INSTALL REQUIREMENTS =  pip install -r .\requirements.txt
-
-RUN SERVER = python manage.py runserver
+STEPS TO RUN THE PROJECT ON WINDOWS OS
+- git clone https://github.com/ompakash/cohireai.git
+- python -m venv myenv
+- .\myenv\Scripts\activate
+- cd .\PrepCV\
+- pip install -r .\requirements.txt
+- python .\manage.py makemigrations
+- python .\manage.py migrate
+- python .\manage.py createsuperuser
+Email: admin@gmail.com
+- python .\manage.py runserver
