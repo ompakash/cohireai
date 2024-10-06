@@ -4,7 +4,7 @@ SIMPLE DJANGO APPLICATION SETUP
 
 STEPS TO RUN THE PROJECT ON WINDOWS OS
 - git clone https://github.com/ompakash/cohireai.git
-- python -m venv myenv
+- python -m venv venv_cohire
 - .\myenv\Scripts\activate
 - cd .\PrepCV\
 - pip install -r .\requirements.txt
