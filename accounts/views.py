@@ -6,12 +6,14 @@ from django.db import transaction
 from rest_framework_simplejwt.tokens import RefreshToken
 from accounts.models import *
 from django.contrib.auth import authenticate
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework_simplejwt.exceptions import TokenError
 
 User = get_user_model()
 
 class SignupUser(APIView):
+    permission_classes = [AllowAny]
+
     def post(self, request):
         with transaction.atomic():
             email = request.data.get("email")
@@ -64,6 +66,7 @@ class SignupUser(APIView):
 
 
 class LoginUser(APIView):
+    permission_classes = [AllowAny]
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
